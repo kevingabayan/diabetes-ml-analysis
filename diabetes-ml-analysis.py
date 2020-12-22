@@ -4,6 +4,7 @@ thanks to user @visabh123 for providing the framework to allow for this analysis
 """
 
 import pandas as pd
+import sklearn
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
@@ -34,7 +35,9 @@ def predict(algorithm_str, y_test, x_test, to_predict):
 
 
 # Import dataset
-dataset = pd.read_csv('diabetes.csv')
+dataset = pd.read_csv('diabetes-ml-data.csv')
+# shuffle dataset
+dataset = dataset.sample(frac=1, random_state=42)
 # X = features
 X = dataset.iloc[:, 0:8].values
 # Y = what we are going to predict
